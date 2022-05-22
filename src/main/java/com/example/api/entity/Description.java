@@ -1,8 +1,10 @@
 package com.example.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Description {
@@ -10,8 +12,13 @@ public class Description {
     @GeneratedValue
     Long id;
 
+    @NotBlank
     String name;
+
+    @NotBlank
     String description;
+
+    @NotBlank
     String lang;
 
     @ManyToOne (cascade = {CascadeType.MERGE, CascadeType.PERSIST} )

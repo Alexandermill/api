@@ -1,8 +1,11 @@
 package com.example.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Price {
@@ -10,8 +13,11 @@ public class Price {
     @GeneratedValue
     Long id;
 
+    @NotNull
     double price;
+
     @Column(name = "currency_code")
+    @NotBlank
     String currencyCode;
 
     @ManyToOne (cascade = {CascadeType.MERGE, CascadeType.PERSIST} )
