@@ -2,7 +2,6 @@ package com.example.api.repository;
 
 import com.example.api.entity.Description;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

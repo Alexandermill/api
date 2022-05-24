@@ -1,16 +1,18 @@
 package com.example.api.repository;
 
 import com.example.api.entity.Product;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+
 
 @Repository
 public interface ProductRepository  extends CrudRepository<Product, Long> {
 
     @Query("select distinct p from Product p left join p.descriptions descriptions left join p.prices prices where descriptions.lang = ?1 and prices.currencyCode = ?2 order by p.id")
-    Iterable<Product> findByLangAndCurrency(String lang, String currency);
+    Iterable<Product> findByLangAndCurrency(String lang, String currency, PageRequest pageable);
 
     @Query("select p from Product p inner join p.descriptions descriptions where descriptions.name = ?1 or descriptions.description = ?2")
     Product findByNameOrDescription(String name, String description);

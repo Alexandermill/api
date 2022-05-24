@@ -1,7 +1,6 @@
 package com.example.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
